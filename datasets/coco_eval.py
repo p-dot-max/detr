@@ -4,6 +4,18 @@ import io
 from collections import defaultdict
 import os
 import numpy as np
+
+# Fix for NumPy 1.24+ compatibility with pycocotools
+# Restore deprecated aliases that pycocotools still uses
+if not hasattr(np, 'float'):
+    np.float = np.float64
+if not hasattr(np, 'int'):
+    np.int = np.int_
+if not hasattr(np, 'bool'):
+    np.bool = np.bool_
+if not hasattr(np, 'complex'):
+    np.complex = np.complex128
+
 import torch
 from pycocotools.coco import COCO
 from pycocotools.cocoeval import COCOeval

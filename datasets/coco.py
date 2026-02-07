@@ -9,6 +9,18 @@ from pathlib import Path
 import torch
 import torch.utils.data
 import torchvision
+import numpy as np
+
+# Fix for NumPy 1.24+ compatibility with pycocotools
+if not hasattr(np, 'float'):
+    np.float = np.float64
+if not hasattr(np, 'int'):
+    np.int = np.int_
+if not hasattr(np, 'bool'):
+    np.bool = np.bool_
+if not hasattr(np, 'complex'):
+    np.complex = np.complex128
+
 from pycocotools import mask as coco_mask
 
 import datasets.transforms as T
