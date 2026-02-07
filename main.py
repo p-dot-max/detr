@@ -9,7 +9,7 @@ from pathlib import Path
 import numpy as np
 import torch
 from torch.utils.data import DataLoader, DistributedSampler
-
+import os
 import datasets
 import util.misc as utils
 from datasets import build_dataset, get_coco_api_from_dataset
